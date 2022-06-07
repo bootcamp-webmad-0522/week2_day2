@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+
+        // Global context: window object
+        console.log('el contexto global es', this)
+        console.log('¿Es window el contexto global?', window === this)
+
+
+
+
+        // Funtion context: window object
+        function whatever() {
+            console.log('¿Cuál es el contexto de una función?', this)
+        }
+
+        whatever()
+
+
+
+
+        // Method context: own object
+        const person = {
+            name: 'German',
+            weight: 70,
+            sayHi() {
+                console.log(`Me llamo ${this.name}, '¡encantado!`)
+            },
+            walk0() {
+                setInterval(function () {
+                    this.weight -= .1
+                    console.log('Estoy caminando y ahora peso', this.weight)
+                }, 1000)
+            },
+            walk1() {
+                const that = this
+                setInterval(function () {
+                    that.weight -= .1
+                    console.log('Estoy caminando y ahora peso', that.weight)
+                }, 1000)
+            },
+            walk2() {
+                setInterval(function () {
+                    this.weight -= .1
+                    console.log('Estoy caminando y ahora peso', this.weight)
+                }.bind(this), 1000)
+            },
+            walk3() {
+                setInterval(() => {
+                    this.weight -= .1
+                    console.log('Estoy caminando y ahora peso', this.weight)
+                }, 1000)
+            }
+        }
+
+        person.sayHi()
+        // person.walk0()              // invalid: window is functions's context
+        // person.walk1()              // invalid: gua-rre-ri-a
+        // person.walk2()              // valid!: bind reorients a function's context
+        person.walk3()                 // valid!: arrow fns do not modify the context
+
+    </script>
+
+</body>
+
+</html>

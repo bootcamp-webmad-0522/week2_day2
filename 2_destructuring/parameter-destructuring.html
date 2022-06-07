@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        // // Non-destructured parameters
+
+        // function getTotaLinfo(data) {
+
+        //     const { customer, subtotal, tax } = data
+
+        //     console.log(`La factura de ${customer} asciende a ${subtotal + tax} €`)
+        // }
+
+
+
+
+        // Destructured parameters
+        function getTotaLinfo({ customer, subtotal, tax }) {
+
+            console.log(`La factura de ${customer} asciende a ${subtotal + tax} €`)
+
+        }
+
+
+        const invoice = {
+            customer: 'Carol',
+            subtotal: 99,
+            tax: 10
+        }
+
+        getTotaLinfo(invoice)
+
+    </script>
+
+</body>
+
+</html>

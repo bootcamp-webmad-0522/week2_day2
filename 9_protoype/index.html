@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        const drinks = new Array('Agua', 'Cacaolat', 'Jagger')
+        const names = ['Popino', 'Germán']
+        const age = new Number(34)
+        const hasPermission = new Boolean(false)
+        const doubleValue = new Function('val', 'return val * val')
+
+        console.log(doubleValue(5))
+
+        // Logs
+        console.log('Un array:', drinks)
+        console.log('El Array global:', Array)
+        console.log('El prototipo del Array global:', Array.prototype)
+
+
+        // Instance extension
+        drinks.showLastDrink = function () {
+            console.log('La ultima bebida es', this[this.length - 1])
+        }
+
+        drinks.showLastDrink()
+
+
+        // Prototype extension
+        Array.prototype.alertFirstItem = function () {
+            alert(this[0])
+        }
+
+
+
+        // Prototype update
+
+        Array.prototype.push = function (newElement) {
+            console.error('Veo que quieres meter', newElement, ', eh? jejejejej')
+            console.error('Pues no solo no va a entrar sino que te saco', this[this.length - 1])
+            this.pop()
+        }
+
+        names.push('CAROL')
+
+
+
+        console.log(drinks)
+        console.log(names)
+
+
+    </script>
+</body>
+
+</html>
